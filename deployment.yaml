@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-crud-deployment
+  labels:
+    app: spring-crud
+spec:
+  replicas: 2  # Number of replicas you want
+  selector:
+    matchLabels:
+      app: spring-crud
+  template:
+    metadata:
+      labels:
+        app: spring-crud
+    spec:
+      containers:
+      - name: spring-crud
+        image: us-central1-docker.pkg.dev/niveustraining/spring-crud-repo/crud-application:latest  # Image path
+        ports:
+        - containerPort: 8080
